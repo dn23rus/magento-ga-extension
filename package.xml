@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>Oggetto_GoogleAnalitycs</name>
+    <version>1.0.0</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/osl-3.0.php">OSL v3.0</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Improve Magento GoogleAnalitycs</summary>
+    <description>Improve Magento GoogleAnalitycs</description>
+    <notes>v1.0.0</notes>
+    <authors><author><name>Dmitry Buryak</name><user>boss23rus</user><email>b.dmitry@oggettoweb.com</email></author></authors>
+    <date>2013-07-05</date>
+    <time>07:46:26</time>
+    <contents><target name="magelocal"><dir name="Oggetto"><dir name="GoogleAnalytics"><dir name="Block"><file name="Ga.php" hash="04b9cf389cd55417080120f4fe213145"/></dir><dir name="Helper"><file name="Data.php" hash="11eb60f36ac8e58e42bf7e023875d13f"/></dir><dir name="etc"><file name="config.xml" hash="07a5000a8d56a6248ab12df0727a3374"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Oggetto_GoogleAnalytics.xml" hash="725c81a71a27aaeb940867c88f117294"/></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.3.3</min><max>5.4.0</max></php><package><name>Mage_Core_Modules</name><channel>community</channel><min>1.5</min><max></max></package></required></dependencies>
+</package>
