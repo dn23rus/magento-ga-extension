@@ -23,25 +23,24 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 -->
-<config>
-    <modules>
-        <Oggetto_GoogleAnalytics>
-            <version>1.1.0</version>
-        </Oggetto_GoogleAnalytics>
-    </modules>
-    <global>
-        <blocks>
-            <googleanalytics>
-                <rewrite>
-                    <ga>Oggetto_GoogleAnalytics_Block_Ga</ga>
-                </rewrite>
-            </googleanalytics>
-        </blocks>
-        <helpers>
-            <oggetto_ga>
-                <class>Oggetto_GoogleAnalytics_Helper</class>
-            </oggetto_ga>
-        </helpers>
-    </global>
-</config>
-
+<conig>
+    <sections>
+        <google>
+            <groups>
+                <analytics>
+                    <fields>
+                        <track_category translate="label">
+                            <label>Add Items Category</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </track_category>
+                    </fields>
+                </analytics>
+            </groups>
+        </google>
+    </sections>
+</conig>

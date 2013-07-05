@@ -42,6 +42,10 @@ class Oggetto_GoogleAnalytics_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function initCategoryCollection(Mage_Sales_Model_Order $order)
     {
+        if (!$this->isEnabled()) {
+            return $this;
+        }
+
         $productIds = array();
         foreach ($items = $order->getAllItems() as $item) {
             /* @var $item Mage_Sales_Model_Order_Item */
@@ -65,7 +69,7 @@ class Oggetto_GoogleAnalytics_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function getCategoryName($productId)
     {
-        if (isset($this->_categories[$productId])) {
+        if ($this->isEnabled() && isset($this->_categories[$productId])) {
             /**
              * @var $categories Mage_Catalog_Model_Resource_Category_Collection
              * @var $category Mage_Catalog_Model_Category
@@ -75,5 +79,15 @@ class Oggetto_GoogleAnalytics_Helper_Data extends Mage_Core_Helper_Abstract
             return $category->getName();
         }
         return null;
+    }
+
+    /**
+     * Check if feature enabled
+     *
+     * @return bool
+     */
+    public function isEnabled()
+    {
+        return Mage::getStoreConfigFlag('google/analytics/track_category');
     }
 }
