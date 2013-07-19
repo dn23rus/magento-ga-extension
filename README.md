@@ -1,6 +1,9 @@
-# Oggetto GoogleAnalytics extension for Magento
+## Oggetto GoogleAnalytics extension for Magento
 
-To install: set up your root composer.json in your project like this
+This module adds ability to track order items category.
+
+###Installation
+Set up your root composer.json in your project like this:
 
 ```json
 {
