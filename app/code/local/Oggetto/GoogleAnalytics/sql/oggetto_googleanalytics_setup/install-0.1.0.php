@@ -23,13 +23,26 @@
  */
 
 /**
- * Default helper
- *
- * @category   Oggetto
- * @package    Oggetto_GoogleAnalytics
- * @subpackage Helper
- * @author     Dmitry Buryak <b.dmitry@oggettoweb.com>
+ * @var $this Mage_Core_Model_Resource_Setup
  */
-class Oggetto_GoogleAnalytics_Helper_Data extends Mage_Core_Helper_Abstract
-{
+
+$installer = $this;
+$installer->startSetup();
+
+$setup = new Mage_Sales_Model_Resource_Setup('core_setup');
+
+try {
+    $setup->addAttribute('quote_item', 'category_name', array(
+        'type'      => 'varchar',
+        'required'  => false,
+        'comment'   => 'Category for Ga',
+    ));
+    $setup->addAttribute('order_item', 'category_name', array(
+        'type'      => 'varchar',
+        'required'  => false,
+        'comment'   => 'Category for Ga',
+    ));
+} catch (Exception $e) {
+    Mage::logException($e);
 }
+$installer->endSetup();

@@ -26,7 +26,7 @@
 <config>
     <modules>
         <Oggetto_GoogleAnalytics>
-            <version>1.1.0</version>
+            <version>1.2.0</version>
         </Oggetto_GoogleAnalytics>
     </modules>
     <global>
@@ -42,6 +42,45 @@
                 <class>Oggetto_GoogleAnalytics_Helper</class>
             </oggetto_ga>
         </helpers>
+        <resources>
+            <oggetto_googleanalytics_setup>
+                <setup>
+                    <module>Oggetto_GoogleAnalytics</module>
+                    <connection>core_setup</connection>
+                </setup>
+            </oggetto_googleanalytics_setup>
+        </resources>
+        <models>
+            <oggetto_ga>
+                <class>Oggetto_GoogleAnalytics_Model</class>
+            </oggetto_ga>
+        </models>
+        <fieldsets>
+            <sales_convert_quote_item>
+                <category_name>
+                    <to_order_item>*</to_order_item>
+                </category_name>
+            </sales_convert_quote_item>
+        </fieldsets>
     </global>
+    <frontend>
+        <events>
+            <controller_action_postdispatch>
+                <observers>
+                    <oggetto_googleanalytics_save_last_category>
+                        <class>oggetto_ga/observer</class>
+                        <method>saveLastCategory</method>
+                    </oggetto_googleanalytics_save_last_category>
+                </observers>
+            </controller_action_postdispatch>
+            <sales_quote_product_add_after>
+                <observers>
+                    <oggetto_googleanalytics_save_last_category>
+                        <class>oggetto_ga/observer</class>
+                        <method>addCategoryNameToQuoteItem</method>
+                    </oggetto_googleanalytics_save_last_category>
+                </observers>
+            </sales_quote_product_add_after>
+        </events>
+    </frontend>
 </config>
-

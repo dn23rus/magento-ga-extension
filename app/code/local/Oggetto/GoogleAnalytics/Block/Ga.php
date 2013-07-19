@@ -42,7 +42,6 @@ class Oggetto_GoogleAnalytics_Block_Ga extends Mage_GoogleAnalytics_Block_Ga
     protected function _getOrdersTrackingCode()
     {
         $orderIds = $this->getOrderIds();
-
         if (empty($orderIds) || !is_array($orderIds)) {
             return '';
         }
@@ -52,7 +51,6 @@ class Oggetto_GoogleAnalytics_Block_Ga extends Mage_GoogleAnalytics_Block_Ga
         $result = array();
         foreach ($collection as $order) {
             /* @var $order Mage_Sales_Model_Order */
-            $this->_getHelper()->initCategoryCollection($order);
             if ($order->getIsVirtual()) {
                 $address = $order->getBillingAddress();
             } else {
@@ -74,7 +72,7 @@ class Oggetto_GoogleAnalytics_Block_Ga extends Mage_GoogleAnalytics_Block_Ga
                     $order->getIncrementId(),
                     $this->jsQuoteEscape($item->getSku()),
                     $this->jsQuoteEscape($item->getName()),
-                    $this->_getHelper()->getCategoryName($item->getProductId()),
+                    $this->jsQuoteEscape($item->getCategoryName()),
                     $item->getBasePrice(),
                     $item->getQtyOrdered()
                 );
@@ -82,15 +80,5 @@ class Oggetto_GoogleAnalytics_Block_Ga extends Mage_GoogleAnalytics_Block_Ga
             $result[] = "_gaq.push(['_trackTrans']);";
         }
         return implode("\n", $result);
-    }
-
-    /**
-     * Helper
-     *
-     * @return Oggetto_GoogleAnalytics_Helper_Data
-     */
-    protected function _getHelper()
-    {
-        return Mage::helper('oggetto_ga');
     }
 }
